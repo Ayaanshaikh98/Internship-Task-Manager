@@ -1,0 +1,56 @@
+import datetime
+
+# data storing uing function
+interns = {}
+tasks = {}
+updates = {}
+feedback = {}
+
+def add_interns(intern_id, name):
+    interns[intern_id] = {"name": name, "tasks": [], "updates": []}
+    print(f"Intern {name} added.")
+
+def assigning_tasks(intern_id, task_description):
+    task = {
+        "description": task_description,
+        "status": "Pending",
+        "assigned_on": str(datetime.date.today())
+    }
+    tasks.setdefault(intern_id, []).append(task)
+    print(f"Task assigned to {interns[intern_id]['name']}.")
+
+def submit_weekly_update(intern_id, update_text):
+    update = {
+        "week": len(updates.get(intern_id, [])) + 1,
+        "date": str(datetime.date.today()),
+        "update": update_text
+    }
+    updates.setdefault(intern_id, []).append(update)
+    print(f"Weekly update submitted by {interns[intern_id]['name']}.")
+
+def give_feedback(intern_id, week, feedback_text):
+    feedback.setdefault(intern_id, {})[week] = feedback_text
+    print(f"Feedback added for week {week}.")
+
+def generate_report(intern_id):
+    print("\n---$$ Internship Report $$---")
+    print(f"Intern's name: {interns[intern_id]['name']}")
+    print("\nTasks:")
+    for t in tasks.get(intern_id, []):
+        print(f" - {t['description']} ({t['status']})")
+
+    print("\nWeekly Updates:")
+    for u in updates.get(intern_id, []):
+        print(f" Week {u['week']}: {u['update']}")
+
+    print("\nFeedback:")
+    for week, fb in feedback.get(intern_id, {}).items():
+        print(f" Week {week}: {fb}")
+    print("\n^----------------------------------------^")
+
+# Example 
+add_interns("i01", "Kundan Bhagat")
+assigning_tasks("i01", "Complete Major_project proposal")
+submit_weekly_update("i01", "Finished initial draft of the proposal.")
+give_feedback("i01", 1, "Good start, refine your objectives.")
+generate_report("i01")
