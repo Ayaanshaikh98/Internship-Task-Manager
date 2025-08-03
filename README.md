@@ -56,15 +56,3 @@ Feedback:
 1. Clone this repository.
 2. Run the script in a Python environment.
 3. Modify or expand functionality as needed for more interns and use cases.
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
-
-### 👤 Author
-
-**Shaikh Ayaan Jameel Ahmad**
-
-Feel free to contribute or connect with me!
